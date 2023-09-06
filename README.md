@@ -1,1 +1,1 @@
-If you consider using any of these userscripts, I recommend using [Tampermonkey](https://violentmonkey.github.io/). After installing the extension you will be able to install any userscript by opening it as Raw in a new tab.
+If you consider using any of these userscripts, I recommend using [Violentmonkey](https://violentmonkey.github.io/). After installing the extension you will be able to install any userscript by opening it as Raw in a new tab.
