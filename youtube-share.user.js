@@ -4,6 +4,7 @@
 // @match       https://www.youtube.com/*
 // @grant       none
 // @version     2.1
+// @downloadURL https://github.com/0Supa/userscripts/raw/main/youtube-share.user.js
 // @author      Supa
 // @description Removes the tracking parameter(s) YouTube adds when using the Share button
 // ==/UserScript==

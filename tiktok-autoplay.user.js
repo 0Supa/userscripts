@@ -4,6 +4,7 @@
 // @match       https://*.tiktok.com/*
 // @grant       none
 // @version     1.0
+// @downloadURL https://github.com/0Supa/userscripts/raw/main/tiktok-autoplay.user.js
 // @author      Supa
 // @description Goes to the next video when the current one ends
 // ==/UserScript==

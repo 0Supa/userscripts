@@ -4,6 +4,7 @@
 // @match       https://player.twitch.tv/*
 // @grant       none
 // @version     1.0
+// @downloadURL https://github.com/0Supa/userscripts/raw/main/twitch-player-title.user.js
 // @author      Supa
 // @description Adds the Twitch channel's name to the tab title
 // ==/UserScript==
