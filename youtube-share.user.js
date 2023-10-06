@@ -3,10 +3,10 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     2.1
+// @version     2.2
 // @downloadURL https://github.com/0Supa/userscripts/raw/main/youtube-share.user.js
 // @author      Supa
-// @description Removes the tracking parameter(s) YouTube adds when using the Share button
+// @description Removes the tracking parameter(s) YouTube adds when using the Share button, and other annoyances
 // ==/UserScript==
 
 const allowedShareParams = ["t"];
@@ -23,9 +23,16 @@ const cleanUrl = (el) => {
 let timeCheckbox = null;
 const observer = new MutationObserver(mutations => {
     for (const m of mutations) {
-        const parent = Array.from(m.addedNodes).find(el => el.classList?.contains("ytd-unified-share-panel-renderer"));
+        const nodes = Array.from(m.addedNodes);
 
-        if (parent) {
+        const adblockerPopup = nodes.find(el => el.nodeName === "YTD-ENFORCEMENT-MESSAGE-VIEW-MODEL");
+        if (adblockerPopup) {
+            adblockerPopup.parentElement.remove();
+            document.querySelector("video")?.play();
+        }
+
+        const sharePanel = nodes.find(el => el.classList?.contains("ytd-unified-share-panel-renderer"));
+        if (sharePanel) {
             const shareUrl = document.querySelector("#share-url");
             if (shareUrl) {
                 cleanUrl(shareUrl);
@@ -46,3 +53,5 @@ const observer = new MutationObserver(mutations => {
 const container = document.querySelector("ytd-app");
 if (!container) throw "Parent container not found";
 observer.observe(container, { childList: true, subtree: true });
+
+window.addEventListener("visibilitychange", e => e.stopImmediatePropagation(), true);
