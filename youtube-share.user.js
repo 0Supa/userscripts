@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     2.2
+// @version     2.3
 // @downloadURL https://github.com/0Supa/userscripts/raw/main/youtube-share.user.js
 // @author      Supa
 // @description Removes the tracking parameter(s) YouTube adds when using the Share button, and other annoyances
@@ -25,10 +25,17 @@ const observer = new MutationObserver(mutations => {
     for (const m of mutations) {
         const nodes = Array.from(m.addedNodes);
 
-        const adblockerPopup = nodes.find(el => el.nodeName === "YTD-ENFORCEMENT-MESSAGE-VIEW-MODEL");
-        if (adblockerPopup) {
-            adblockerPopup.parentElement.remove();
-            document.querySelector("video")?.play();
+        const dialog = nodes.find(el => el.nodeName === "TP-YT-PAPER-DIALOG")
+        if (dialog) {
+            const childNodes = Array.from(dialog.childNodes);
+
+            const adblockerPopup = childNodes.find(el => el.nodeName === "YTD-ENFORCEMENT-MESSAGE-VIEW-MODEL");
+            if (adblockerPopup) {
+                dialog.remove();
+                document.querySelector("video")?.play();
+                document.querySelector("tp-yt-iron-overlay-backdrop")?.remove();
+            }
+            break;
         }
 
         const sharePanel = nodes.find(el => el.classList?.contains("ytd-unified-share-panel-renderer"));
