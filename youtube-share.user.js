@@ -9,7 +9,7 @@
 // @description Removes the tracking parameter(s) YouTube adds when using the Share button, and other annoyances
 // ==/UserScript==
 
-const allowedShareParams = ["t"];
+const allowedShareParams = ["t", "list"];
 
 const cleanUrl = (el) => {
     const url = new URL(el.value);
