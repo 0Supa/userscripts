@@ -25,20 +25,7 @@ const observer = new MutationObserver(mutations => {
     for (const m of mutations) {
         const nodes = Array.from(m.addedNodes);
 
-        const dialog = nodes.find(el => el.nodeName === "TP-YT-PAPER-DIALOG")
-        if (dialog) {
-            const childNodes = Array.from(dialog.childNodes);
-
-            const adblockerPopup = childNodes.find(el => el.nodeName === "YTD-ENFORCEMENT-MESSAGE-VIEW-MODEL");
-            if (adblockerPopup) {
-                dialog.remove();
-                document.querySelector("video")?.play();
-                document.querySelector("tp-yt-iron-overlay-backdrop")?.remove();
-            }
-            break;
-        }
-
-        const sharePanel = nodes.find(el => el.classList?.contains("ytd-unified-share-panel-renderer"));
+        const sharePanel = nodes.find(el => el.classList?.contains("yt-unified-share-panel-renderer"));
         if (sharePanel) {
             const shareUrl = document.querySelector("#share-url");
             if (shareUrl) {
