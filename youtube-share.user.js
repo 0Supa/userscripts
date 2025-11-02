@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     2.3.1
+// @version     2.3.2
 // @downloadURL https://github.com/0Supa/userscripts/raw/main/youtube-share.user.js
 // @author      Supa
 // @description Removes the tracking parameter(s) YouTube adds when using the Share button, and other annoyances
